@@ -7,7 +7,7 @@ public class CharacterController : MonoBehaviour
 {
     private SpriteRenderer rend;
     private Rigidbody2D body;
-    public float speed = 3.0f;
+    public float speed = 5.0f;
     public float force = 300;
 
     void Start () {
@@ -20,7 +20,7 @@ public class CharacterController : MonoBehaviour
         if (rend != null)
         {
             float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-            if (transform.position.x >= 75f && x > 0) {
+            if (transform.position.x >= 125f && x > 0) {
                 rend.flipX = true;
                 transform.Translate(0, 0, 0);
             } else if (transform.position.x < 0f && x < 0) {
@@ -38,7 +38,7 @@ public class CharacterController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) 
         {
-            if (transform.position.y <= 4.5f) 
+            if (transform.position.y <= 3.5f) 
             {
                 body.AddForce(Vector2.up * force);
             }

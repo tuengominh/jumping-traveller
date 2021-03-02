@@ -5,22 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class CollisionDetection : MonoBehaviour
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
+    int collisionCount = 1;
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.tag == "Building")
         {
-            // Restart
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Debug.Log("Collision detected: " + collisionCount);
+            collisionCount++;
         }
     }
 }
