@@ -20,7 +20,7 @@ public class CharacterController : MonoBehaviour
         if (rend != null)
         {
             float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-            if (transform.position.x >= 125f && x > 0) {
+            if (transform.position.x >= 120f && x > 0) {
                 rend.flipX = true;
                 transform.Translate(0, 0, 0);
             } else if (transform.position.x < 0f && x < 0) {
