@@ -5,32 +5,45 @@ using UnityEngine.SceneManagement;
 
 public class CharacterController : MonoBehaviour
 {
+    public GameEngine game;
     private SpriteRenderer rend;
     private Rigidbody2D body;
-    public float speed = 5.0f;
-    public float force = 300;
+    public int speed = 5;
+    public int force = 300;
 
-    void Start () {
+    void Start () 
+    { 
         rend = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
     }
 
-    void Update () {
+    void Update () 
+    {
+        speed = game.speed; 
+
         float f = Input.GetAxis("Horizontal");
-        if (rend != null)
+        if (rend != null) 
         {
             float x = Input.GetAxis("Horizontal") * Time.deltaTime * speed;
-            if (transform.position.x >= 120f && x > 0) {
+            if (transform.position.x >= 120f && x > 0) 
+            {
                 rend.flipX = true;
                 transform.Translate(0, 0, 0);
-            } else if (transform.position.x < 0f && x < 0) {
+            } 
+            else if (transform.position.x < 0f && x < 0) 
+            {
                 rend.flipX = true;
                 transform.Translate(0, 0, 0);
-            } else {
+            } 
+            else 
+            {
                 transform.Translate(x, 0, 0);
-                if (x < 0) {
+                if (x < 0) 
+                {
                     rend.flipX = true;
-                } else {
+                } 
+                else 
+                {
                     rend.flipX = false;
                 }
             }
