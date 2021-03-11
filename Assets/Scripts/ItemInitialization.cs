@@ -19,7 +19,6 @@ public class ItemInitialization : MonoBehaviour
             {
                 Instantiate(item, new Vector3(xPos,yPos,0), Quaternion.identity);
             } 
-            item.transform.Translate(0, -speed, 0);
         } 
         catch 
         {

@@ -2,19 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameEngine : MonoBehaviour
 {
-    // public int level = 1;
+    public int level = 0;
     public int pieceCollected = 0;
-    public int energy = 5000;
-    public int timeLeft = 12000;
-    public int speed = 5;
+    public int energy;
+    public int timeLeft;
+    public int speed;
     private bool gameOver = false;
+    public GameObject gameOverUI;
 
     void Start()
     {
-    
+        gameOverUI.SetActive(false);
+        level = PlayerPrefs.GetInt("MyLevel");
+        if (level == 0) {
+            energy = 5000;
+            timeLeft = 12000;
+            speed = 5;
+        } else {
+            energy = 3000;
+            timeLeft = 10000;
+            speed = 3;
+        }
     }
 
     void Update()
@@ -28,14 +40,15 @@ public class GameEngine : MonoBehaviour
                 die();
             }
             if (pieceCollected == 6) {
+                level = 1;
+                saveLevel();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-                // TODO: setActive() NextLevel panel 
             }
         }
         else 
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            // TODO: setActive() GameOver panel 
+            gameOverUI.SetActive(true);
+            Application.Quit();
         }
     }
 
@@ -44,10 +57,14 @@ public class GameEngine : MonoBehaviour
         gameOver = true;  
     }
 
+    public void saveLevel() {
+        PlayerPrefs.SetInt("MyLevel",level);
+    }
+
     public void modifyState(int col) {
         if (col == 0) 
         {
-            energy = energy - 2;
+            energy = energy - 100;
             speed--;
         } 
         else if (col == 1) 
@@ -67,10 +84,12 @@ public class GameEngine : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Box(new Rect(10, 10, 200, 20), "Energy: " + energy);
-        GUI.Box(new Rect(10, 30, 200, 20), "Time Left: " + timeLeft);
-        GUI.Box(new Rect(10, 50, 200, 20), "Speed: " + speed);
-        GUI.Box(new Rect(10, 70, 200, 20), "Pieces Collected: " + pieceCollected);
+        int displayLevel = level+1;
+        GUI.Box(new Rect(10, 10, 200, 20), "Level: " + displayLevel);
+        GUI.Box(new Rect(10, 30, 200, 20), "Energy: " + energy);
+        GUI.Box(new Rect(10, 50, 200, 20), "Time Left: " + timeLeft);
+        GUI.Box(new Rect(10, 70, 200, 20), "Speed: " + speed);
+        GUI.Box(new Rect(10, 90, 200, 20), "Pieces Collected: " + pieceCollected);
     }
 
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ObstacleController : MonoBehaviour
 {
+    public GameEngine game;
     public float speed = 0;
     public float switchTime = 1;
     public Transform obs;
@@ -15,7 +16,7 @@ public class ObstacleController : MonoBehaviour
     }
 
     void Switch() {
-        if (obs.position.y <= 15f && obs.position.y >= 0f) {
+        if (obs.position.y <= 13f && obs.position.y >= 0f) {
             GetComponent<Rigidbody2D>().velocity *= -1;
         }
     }
