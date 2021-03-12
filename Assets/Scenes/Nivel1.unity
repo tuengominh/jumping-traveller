@@ -139,6 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0808c2a3a67854262bf325faaab355a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 0}
   speed: 1
   switchTime: 2
   obs: {fileID: 369745986}
@@ -244,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0808c2a3a67854262bf325faaab355a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 0}
   speed: 1
   switchTime: 2
   obs: {fileID: 509805302}
@@ -529,6 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0808c2a3a67854262bf325faaab355a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 0}
   speed: 1
   switchTime: 2
   obs: {fileID: 1980350682}
@@ -778,6 +781,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0808c2a3a67854262bf325faaab355a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  game: {fileID: 0}
   speed: 1
   switchTime: 2
   obs: {fileID: 744659325}
@@ -943,9 +947,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   pieceCollected: 0
-  energy: 5000
+  energy: 8000
   timeLeft: 12000
-  speed: 5
+  speed: 6
   gameOverUI: {fileID: 1489662414}
 --- !u!1001 &1308624987
 PrefabInstance:

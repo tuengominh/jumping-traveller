@@ -6,26 +6,20 @@ using UnityEngine.UI;
 
 public class GameEngine : MonoBehaviour
 {
-    public int level = 0;
+    public int level;
     public int pieceCollected = 0;
-    public int energy;
-    public int timeLeft;
-    public int speed;
+    public int energy = 8000;
+    public int timeLeft = 12000;
+    public int speed = 6;
     private bool gameOver = false;
     public GameObject gameOverUI;
 
     void Start()
     {
         gameOverUI.SetActive(false);
-        level = PlayerPrefs.GetInt("MyLevel");
-        if (level == 0) {
+        if (level != 1) {
             energy = 5000;
-            timeLeft = 12000;
-            speed = 5;
-        } else {
-            energy = 3000;
             timeLeft = 10000;
-            speed = 3;
         }
     }
 
@@ -40,9 +34,7 @@ public class GameEngine : MonoBehaviour
                 die();
             }
             if (pieceCollected == 6) {
-                level = 1;
-                saveLevel();
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                SceneManager.LoadScene("Nivel2");
             }
         }
         else 
@@ -57,14 +49,10 @@ public class GameEngine : MonoBehaviour
         gameOver = true;  
     }
 
-    public void saveLevel() {
-        PlayerPrefs.SetInt("MyLevel",level);
-    }
-
     public void modifyState(int col) {
         if (col == 0) 
         {
-            energy = energy - 100;
+            energy = energy - 50;
             speed--;
         } 
         else if (col == 1) 
@@ -84,8 +72,7 @@ public class GameEngine : MonoBehaviour
 
     void OnGUI()
     {
-        int displayLevel = level+1;
-        GUI.Box(new Rect(10, 10, 200, 20), "Level: " + displayLevel);
+        GUI.Box(new Rect(10, 10, 200, 20), "Level: " + level);
         GUI.Box(new Rect(10, 30, 200, 20), "Energy: " + energy);
         GUI.Box(new Rect(10, 50, 200, 20), "Time Left: " + timeLeft);
         GUI.Box(new Rect(10, 70, 200, 20), "Speed: " + speed);
